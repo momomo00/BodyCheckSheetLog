@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="momomo00.bodychecksheetlog.MainActivity">
+
+    <Button
+        android:text="PREV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/prevButton" />
+
+    <Button
+        android:text="next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/nextButton" />
+
+    <TextView
+        android:text="体重"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/prevButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp"
+        android:layout_toLeftOf="@+id/bodyWeight"
+        android:layout_toStartOf="@+id/bodyWeight" />
+
+    <TextView
+        android:text="2017.01.01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recordingDate"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/prevButton"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="Kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bodyWeight"
+        android:layout_toRightOf="@+id/bodyWeight"
+        android:layout_toEndOf="@+id/bodyWeight"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:text="体脂肪率"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bodyWeight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:id="@+id/bodyWeight"
+        android:layout_gravity="end"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toRightOf="@+id/prevButton"
+        android:layout_toEndOf="@+id/prevButton"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/bodyWeight"
+        android:layout_alignStart="@+id/bodyWeight"
+        android:id="@+id/bodyFatPercentage"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:text="％"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bodyFatPercentage"
+        android:layout_toRightOf="@+id/bodyFatPercentage"
+        android:layout_toEndOf="@+id/bodyFatPercentage"
+        android:id="@+id/textView7" />
+
+    <TextView
+        android:text="体年齢"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bodyFatPercentage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView8" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="20"
+        android:ems="10"
+        android:layout_below="@+id/bodyFatPercentage"
+        android:layout_toLeftOf="@+id/textView7"
+        android:layout_toStartOf="@+id/textView7"
+        android:id="@+id/bodyAge"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:text="BMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bodyAge"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView9" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:layout_below="@+id/bodyAge"
+        android:layout_alignLeft="@+id/bodyAge"
+        android:layout_alignStart="@+id/bodyAge"
+        android:id="@+id/BMI"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:text="基礎代謝"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BMI"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView10" />
+
+    <TextView
+        android:text="歳"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BMI"
+        android:layout_toRightOf="@+id/bodyAge"
+        android:layout_toEndOf="@+id/bodyAge"
+        android:id="@+id/textView11" />
+
+    <TextView
+        android:text="kcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/basalMetabolism"
+        android:layout_toRightOf="@+id/basalMetabolism"
+        android:layout_toEndOf="@+id/basalMetabolism"
+        android:id="@+id/textView13" />
+
+    <TextView
+        android:text="骨格筋率"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/basalMetabolism"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView14" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:layout_below="@+id/basalMetabolism"
+        android:layout_alignLeft="@+id/basalMetabolism"
+        android:layout_alignStart="@+id/basalMetabolism"
+        android:id="@+id/skeletalMuscleRatio"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:text="％"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/skeletalMuscleRatio"
+        android:layout_toRightOf="@+id/skeletalMuscleRatio"
+        android:layout_toEndOf="@+id/skeletalMuscleRatio"
+        android:id="@+id/textView15" />
+
+    <TextView
+        android:text="内臓脂肪レベル"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/skeletalMuscleRatio"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView16"
+        android:layout_above="@+id/textView18"
+        android:layout_gravity="start"
+        android:layout_toLeftOf="@+id/skeletalMuscleRatio"
+        android:layout_alignRight="@+id/textView18"
+        android:layout_alignEnd="@+id/textView18" />
+
+    <TextView
+        android:text="体幹皮下脂肪率"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/VisceralFatLevel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView18"
+        android:layout_alignBottom="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:layout_toLeftOf="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:layout_alignRight="@+id/textView14"
+        android:layout_alignEnd="@+id/textView14" />
+
+    <TextView
+        android:text="％"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:layout_toRightOf="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:layout_toEndOf="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:id="@+id/textView19" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:id="@+id/VisceralFatLevel"
+        android:layout_gravity="end"
+        android:layout_below="@+id/skeletalMuscleRatio"
+        android:layout_alignLeft="@+id/skeletalMuscleRatio"
+        android:layout_alignStart="@+id/skeletalMuscleRatio"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:id="@+id/bodyTrunkSubcutaneousFatRatio"
+        android:layout_gravity="end"
+        android:layout_below="@+id/VisceralFatLevel"
+        android:layout_alignLeft="@+id/VisceralFatLevel"
+        android:layout_alignStart="@+id/VisceralFatLevel"
+        android:textAlignment="textEnd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0"
+        android:ems="10"
+        android:id="@+id/basalMetabolism"
+        android:layout_gravity="end"
+        android:layout_below="@+id/BMI"
+        android:layout_alignLeft="@+id/BMI"
+        android:layout_alignStart="@+id/BMI"
+        android:textAlignment="textEnd" />
+
+</RelativeLayout>
