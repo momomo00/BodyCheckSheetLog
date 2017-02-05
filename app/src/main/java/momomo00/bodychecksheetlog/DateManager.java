@@ -3,6 +3,7 @@ package momomo00.bodychecksheetlog;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.text.format.DateFormat;
+import android.text.method.CharacterPickerDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -41,28 +42,11 @@ public class DateManager {
         setCurrentDate();
 
         // 次の日付を選択された場合
-        mNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setNextDate();
-            }
-        });
-
+        mNextButton.setOnClickListener(mOnClickListener);
         // 前の日付を選択された場合
-        mPrevButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setPrevDate();
-            }
-        });
-
+        mPrevButton.setOnClickListener(mOnClickListener);
         // 日付入力が選択された場合
-        mRecordingDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setAnyDate();
-            }
-        });
+        mRecordingDate.setOnClickListener(mOnClickListener);
     }
 
     /**
@@ -73,6 +57,25 @@ public class DateManager {
         mNextButton = (Button)mActivity.findViewById(R.id.nextButton);
         mPrevButton = (Button)mActivity.findViewById(R.id.prevButton);
     }
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.recordingDate:
+                    setAnyDate();
+                    break;
+                case R.id.nextButton:
+                    setNextDate();
+                    break;
+                case R.id.prevButton:
+                    setPrevDate();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     /**
      * 現在の日付を設定
@@ -124,5 +127,9 @@ public class DateManager {
     private void setDateInScreen(Calendar calendar) {
         CharSequence date = DateFormat.format("yyyy.MM.dd", calendar);
         mRecordingDate.setText(date);
+    }
+
+    public String getCalendarDate() {
+        return DateFormat.format("yyyy.MM.dd", mCalendar).toString();
     }
 }

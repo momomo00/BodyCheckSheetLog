@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayInList() {
-        Toast.makeText(this, "まだ未実装だよ", Toast.LENGTH_SHORT).show();
+        Intent  showBodyLog = new Intent(this, ShowBodyLog.class);
+        startActivity(showBodyLog);
     }
 
     private void displayInGraph() {

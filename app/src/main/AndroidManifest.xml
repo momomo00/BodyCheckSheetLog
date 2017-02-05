@@ -19,6 +19,10 @@
             android:name=".InputBodyLog"
             android:parentActivityName="momomo00.bodychecksheetlog.MainActivity">
         </activity>
+        <activity
+            android:name=".ShowBodyLog"
+            android:parentActivityName="momomo00.bodychecksheetlog.MainActivity">
+        </activity>
     </application>
 
 </manifest>

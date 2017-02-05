@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">体重管理アプリ</string>
+
+    <string-array name="show_body_log_menu_list">
+        <item>体重</item>
+        <item>体脂肪率</item>
+        <item>体年齢</item>
+    </string-array>
 </resources>

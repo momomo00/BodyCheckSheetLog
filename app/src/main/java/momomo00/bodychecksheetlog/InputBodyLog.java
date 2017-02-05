@@ -1,15 +1,22 @@
 package momomo00.bodychecksheetlog;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import momomo00.bodychecksheetlog.FeedReaderContract.FeedEntry;
 
 /**
  * Created by songo_000 on 2017/01/22.
@@ -29,6 +36,8 @@ public class InputBodyLog extends AppCompatActivity {
     private EditText    mBodyTrunkSubcutaneousFatRatio;
     private Button mRegisterButton;
 
+    private DateManager mDateManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +49,10 @@ public class InputBodyLog extends AppCompatActivity {
         getIdInScreen();
 
         // 日付の管理を行う
-        new DateManager(this);
+        mDateManager = new DateManager(this);
 
         // 登録を押されたとき
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickRegisterButton();
-            }
-        });
+        mRegisterButton.setOnClickListener(mOnClickListener);
     }
 
     private void setActionBarSettings() {
@@ -61,7 +65,7 @@ public class InputBodyLog extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.input_body_log_menu, menu);
         return true;
     }
 
@@ -96,7 +100,26 @@ public class InputBodyLog extends AppCompatActivity {
         mRegisterButton = (Button)findViewById(R.id.registerButton);
     }
 
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.registerButton:
+                    onClickRegisterButton();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     private void onClickRegisterButton() {
+        insertBodyLog();
+        Toast.makeText(this, "登録完了", Toast.LENGTH_SHORT).show();
+    }
+
+    private void insertBodyLog() {
+        String inputDate = mDateManager.getCalendarDate();
         double bodyWeight = Double.parseDouble(mBodyWeight.getText().toString());
         double bodyFatPercentage = Double.parseDouble(mBodyFatPercentage.getText().toString());
         int bodyAge = Integer.parseInt(mBodyAge.getText().toString());
@@ -106,7 +129,19 @@ public class InputBodyLog extends AppCompatActivity {
         double visceralFatLevel = Double.parseDouble(mVisceralFatLevel.getText().toString());
         double bodyTrunkSubcutaneousFatRatio = Double.parseDouble(mBodyTrunkSubcutaneousFatRatio.getText().toString());
 
-        Toast.makeText(this, "体重: " + String.valueOf(bodyWeight), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "体脂肪率: " + String.valueOf(bodyFatPercentage), Toast.LENGTH_SHORT).show();
+        SQLiteDatabase db = FeedReaderDbHelper.getInstance(this).getWritableDatabase();
+
+        ContentValues   values = new ContentValues();
+        values.put(FeedEntry.INPUT_DATE, inputDate);
+        values.put(FeedEntry.BODY_WEIGHT, bodyWeight);
+        values.put(FeedEntry.BODY_FAT_PERCENTAGE, bodyFatPercentage);
+        values.put(FeedEntry.BODY_AGE, bodyAge);
+        values.put(FeedEntry.BMI, BMI);
+        values.put(FeedEntry.BASAL_METABOLISM, basalMetabolism);
+        values.put(FeedEntry.SKELETAL_MUSCLE_RATIO, skeletalMuscleRatio);
+        values.put(FeedEntry.VISCERAL_FAT_LEVEL, visceralFatLevel);
+        values.put(FeedEntry.BODY_TRUNK_SUBCUTANEOUS_FAT_RATIO, bodyTrunkSubcutaneousFatRatio);
+
+        db.insert(FeedEntry.TABLE_NAME, null, values);
     }
 }
